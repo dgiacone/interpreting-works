@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Blog — interpretingWorks | Language Access & Interpreter Scheduling"
+  description="Insights on language access, interpreter scheduling, HIPAA compliance, OPI, VRI, and healthcare communication from the interpretingWorks team."
+  geoRegion="US"
+  geoPlacename="United States"
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-white border-b border-gray-100 pt-16 pb-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <div class="mb-4 inline-flex items-center rounded-full border border-[#DC3C52]/20 bg-[#FFF0F1] px-4 py-2 text-sm font-semibold text-[#DC3C52]">
+            Language Access Resources
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0D1B2A] mb-5">
+            Blog
+          </h1>
+          <p class="text-gray-500 text-lg leading-relaxed">
+            Insights on language access, interpreter scheduling, HIPAA compliance, and effective communication for healthcare, legal, and business settings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POSTS GRID -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {posts.length === 0 ? (
+          <p class="text-center text-gray-400 py-20">No posts yet. Check back soon.</p>
+        ) : (
+          <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
+            {posts.map(post => (
+              <li>
+                <a
+                  href={`/blog/${post.id}/`}
+                  class="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full"
+                >
+                  <!-- Cover image -->
+                  <div class="aspect-[16/9] overflow-hidden bg-gray-100">
+                    {post.data.image ? (
+                      <img
+                        src={post.data.image}
+                        alt={post.data.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        width="600" height="338"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="w-full h-full bg-gradient-to-br from-[#FFF0F1] to-[#DC3C52]/10 flex items-center justify-center">
+                        <img src="/img/logo.png" alt="" class="h-10 w-auto opacity-20" width="100" height="32" loading="lazy" />
+                      </div>
+                    )}
+                  </div>
+
+                  <!-- Content -->
+                  <div class="flex flex-col flex-1 p-6">
+                    <!-- Tags -->
+                    {post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1.5 mb-3">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="rounded-full bg-[#FFF0F1] px-2.5 py-0.5 text-xs font-semibold text-[#DC3C52]">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+
+                    <h2 class="text-lg font-bold text-[#0D1B2A] leading-snug mb-3 group-hover:text-[#DC3C52] transition-colors line-clamp-2">
+                      {post.data.title}
+                    </h2>
+
+                    <p class="text-gray-500 text-sm leading-relaxed flex-1 line-clamp-3 mb-5">
+                      {post.data.description}
+                    </p>
+
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                      <span class="text-xs text-gray-400">{formatDate(post.data.pubDate)}</span>
+                      <span class="text-xs font-semibold text-[#DC3C52] flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Read more
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-[#0D1B2A] text-white text-center">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-4">Ready to streamline your interpreter scheduling?</h2>
+        <p class="text-gray-400 text-lg mb-8">See how interpretingWorks helps hospitals, courts, and businesses across the US.</p>
+        <a href="/request-demo/" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#DC3C52] px-8 py-4 text-base font-semibold text-white hover:bg-[#b83044] transition-colors">
+          Request a Demo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D1B2A] text-white border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div class="lg:col-span-2">
+          <img src="/img/logo.png" alt="interpretingWorks" class="h-10 w-auto mb-6 brightness-0 invert" width="200" height="64" loading="lazy" />
+          <p class="text-gray-400 text-base max-w-sm leading-relaxed">
+            interpretingWorks by Language Link Corporation. Professional interpreting scheduling across the United States.
+          </p>
+        </div>
+        <nav aria-label="Company links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Company</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/about/"   class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
+            <li><a href="/blog/"    class="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            <li><a href="/faq/"     class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></li>
+            <li><a href="/contact/" class="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Solutions links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Solutions</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/services/organizations/" class="text-gray-400 hover:text-white transition-colors text-sm">For Organizations</a></li>
+            <li><a href="/services/language-service-providers/" class="text-gray-400 hover:text-white transition-colors text-sm">Access Point</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Legal</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/privacy/" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+            <li><a href="/terms/"   class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <p>&copy; 2025 interpretingWorks · Language Link Corporation. All rights reserved.</p>
+        <p>Serving hospitals, clinics, courts, schools, and businesses across the United States.</p>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>
