@@ -1,0 +1,98 @@
+---
+const path = Astro.url.pathname;
+const active = (href: string) => path === href || path.startsWith(href + '/') && href !== '/';
+
+const links = [
+  { href: '/about/', label: 'About Us' },
+  { href: '/faq/',   label: 'FAQ' },
+  { href: '/contact/', label: 'Contact Us' },
+];
+---
+
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm" aria-label="Primary navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3">
+
+      <a href="/" class="flex items-center" aria-label="interpretingWorks home">
+        <img src="/img/logo.png" alt="interpretingWorks" class="h-10 w-auto" width="200" height="64" loading="eager" />
+      </a>
+
+      <!-- Desktop -->
+      <div class="hidden md:flex items-center gap-7">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              'font-medium transition-colors text-sm',
+              active(link.href)
+                ? 'text-[#DC3C52] font-semibold border-b-2 border-[#DC3C52] pb-0.5'
+                : 'text-gray-600 hover:text-[#DC3C52]',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="https://interpreting.works/app/#!/login" target="_blank" rel="noopener noreferrer" class="text-[#0D1B2A] font-semibold hover:text-[#DC3C52] transition-colors text-sm">
+          Login
+        </a>
+        <a href="/request-demo/" class="bg-[#DC3C52] text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#b83044] transition-colors shadow-sm">
+          Request a Demo
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="nav-toggle"
+        type="button"
+        class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100 mt-1 pt-3">
+      <div class="flex flex-col gap-1">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              'px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+              active(link.href)
+                ? 'bg-[#FFF0F1] text-[#DC3C52] font-semibold'
+                : 'text-gray-600 hover:bg-gray-50 hover:text-[#DC3C52]',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="https://interpreting.works/app/#!/login" target="_blank" rel="noopener noreferrer" class="px-3 py-2.5 rounded-lg text-sm font-semibold text-[#0D1B2A] hover:bg-gray-50 transition-colors">
+          Login
+        </a>
+        <a href="/request-demo/" class="mt-2 text-center bg-[#DC3C52] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#b83044] transition-colors">
+          Request a Demo
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  const iconOpen  = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+  });
+</script>

@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FaqTabs from '../../components/FaqTabs.tsx';
+
+const SITE = 'https://interpreting.works';
+
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE}/faq/#faqpage`,
+    name: "Frequently Asked Questions — interpretingWorks",
+    mainEntity: [
+      // Requesters
+      { "@type": "Question", name: "What is InterpretingWorks?", acceptedAnswer: { "@type": "Answer", text: "InterpretingWorks is a secure scheduling platform that helps you request, manage, and track interpreter services quickly and efficiently. It automates scheduling, confirmations, reporting, and billing — all in one place." } },
+      { "@type": "Question", name: "How do I request an interpreter?", acceptedAnswer: { "@type": "Answer", text: "Simply log into your InterpretingWorks account, select \"New Request,\" and fill in the required details such as date, time, language, and location. You can also attach case numbers or internal references if needed." } },
+      { "@type": "Question", name: "Can I choose a specific interpreter?", acceptedAnswer: { "@type": "Answer", text: "Yes. You can request a specific interpreter if they meet your project or program's requirements and are available. Otherwise, the system automatically assigns one based on credentials, proximity, and availability." } },
+      { "@type": "Question", name: "How much does it cost to use the system?", acceptedAnswer: { "@type": "Answer", text: "There are no setup or licensing fees to access InterpretingWorks. The platform is included as part of the interpreting services provided by Language Link. Agencies only pay for completed interpreting assignments according to the agreed contract rates; the use of the system, reporting, and support tools is included at no additional cost." } },
+      { "@type": "Question", name: "How does electronic check-in/out work?", acceptedAnswer: { "@type": "Answer", text: "Interpreters check in and out electronically using geo-location verification, ensuring accurate start and end times and full transparency for billing and compliance." } },
+      { "@type": "Question", name: "Can I track assignment status in real time?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Dashboard provides live updates for all pending, active, and completed assignments, so you always know the status of your requests." } },
+      { "@type": "Question", name: "How do I generate reports?", acceptedAnswer: { "@type": "Answer", text: "You can create and export reports instantly through our Unlimited Report Functionality, filter by language, location, requester, or date to view performance and billing summaries." } },
+      { "@type": "Question", name: "Does the system follow security protocols?", acceptedAnswer: { "@type": "Answer", text: "Yes. InterpretingWorks is built with enterprise-grade security and compliance standards. All data is encrypted in transit and at rest, and the platform complies with HIPAA, CLAS, and applicable state and federal privacy regulations." } },
+      // Interpreters
+      { "@type": "Question", name: "How will interpreters receive assignments?", acceptedAnswer: { "@type": "Answer", text: "Interpreters receive automatic notifications by email or text whenever a new assignment matches their language, credentials, and availability. They can accept or decline directly through the portal." } },
+      { "@type": "Question", name: "When will interpreters get paid?", acceptedAnswer: { "@type": "Answer", text: "Payments are processed according to contract terms, typically within 15 days after client payment is received by InterpretingWorks. Payment history is available in the dashboard." } },
+      { "@type": "Question", name: "Is InterpretingWorks free for interpreters?", acceptedAnswer: { "@type": "Answer", text: "InterpretingWorks is completely free for interpreters. There are no fees to register, accept jobs, or access your schedule and payment information." } },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ — interpretingWorks | Interpreter Scheduling Platform"
+  description="Answers to the most common questions about using interpretingWorks — for requesters (agencies, courts, healthcare) and interpreters. Scheduling, billing, HIPAA compliance, and more."
+  geoRegion="US"
+  geoPlacename="United States"
+  schema={pageSchema}
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="relative bg-white overflow-hidden pt-20 pb-16 border-b border-gray-100">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,#FFF0F1_0%,rgba(255,255,255,0)_70%)]" aria-hidden="true"></div>
+      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-5 inline-flex items-center rounded-full border border-[#DC3C52]/20 bg-[#FFF0F1] px-4 py-2 text-sm font-semibold text-[#DC3C52]">
+          Frequently Asked Questions
+        </div>
+        <h1 class="text-[40px] sm:text-[54px] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#0D1B2A] mb-6">
+          FAQs
+        </h1>
+        <p class="text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+          InterpretingWorks was built to simplify every step of the scheduling process — from submitting requests to tracking real-time performance.
+          Find answers below for <strong class="text-[#0D1B2A] font-semibold">requesters</strong> and <strong class="text-[#0D1B2A] font-semibold">interpreters</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION (React island) -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FaqTabs client:load />
+      </div>
+    </section>
+
+    <!-- STATIC FALLBACK — fully indexed by search engines -->
+    <section class="py-16 bg-white border-t border-gray-100">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-[#0D1B2A] mb-10">Quick Answers</h2>
+        <dl class="space-y-7">
+          {[
+            { q: 'What is InterpretingWorks?', a: 'InterpretingWorks is a secure scheduling platform that helps requesters and interpreters manage interpreter services — automating scheduling, confirmations, reporting, and billing all in one place.' },
+            { q: 'Is there a cost for organizations or agencies?', a: 'No setup or licensing fees. Organizations pay only for completed interpreting assignments at agreed contract rates. System access, reporting, and support tools are included.' },
+            { q: 'Is InterpretingWorks HIPAA compliant?', a: 'Yes. The platform complies with HIPAA, CLAS, and applicable federal and state privacy regulations. Data is encrypted in transit and at rest, and access is role-based with full activity logging.' },
+            { q: 'Is it free for interpreters?', a: 'Completely free. Interpreters have no registration, job acceptance, or access fees. The platform is provided by Language Link as part of the interpreter partnership.' },
+            { q: 'How does electronic check-in/out work?', a: 'Interpreters check in and out using geo-location on their phone, providing accurate start/end times for transparent billing and compliance.' },
+            { q: 'How do I get support?', a: 'Contact support@mylanguagelink.org or call (800) 905-0896.' },
+          ].map(item => (
+            <div class="border-b border-gray-100 pb-7">
+              <dt class="text-base font-bold text-[#0D1B2A] mb-2">{item.q}</dt>
+              <dd class="text-gray-600 leading-relaxed text-sm">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-[#0D1B2A] text-white text-center">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-4">Still have questions?</h2>
+        <p class="text-gray-400 text-lg mb-8">Our team is here to help. Reach out and we'll get back to you quickly.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#DC3C52] px-8 py-4 text-base font-semibold text-white hover:bg-[#b83044] transition-colors">
+            Contact Us
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/request-demo/" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors">
+            Request a Demo
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D1B2A] text-white border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div class="lg:col-span-2">
+          <img src="/img/logo.png" alt="interpretingWorks" class="h-10 w-auto mb-6 brightness-0 invert" width="200" height="64" loading="lazy" />
+          <p class="text-gray-400 text-base max-w-sm leading-relaxed">
+            interpretingWorks by Language Link Corporation. Professional interpreting scheduling for organizations and the LSPs that serve them across the United States.
+          </p>
+        </div>
+        <nav aria-label="Company links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Company</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/about/"     class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
+            <li><a href="/faq/"       class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></li>
+            <li><a href="/resources/" class="text-gray-400 hover:text-white transition-colors text-sm">Resources</a></li>
+            <li><a href="/contact/"   class="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Solutions links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Solutions</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/services/organizations/"              class="text-gray-400 hover:text-white transition-colors text-sm">For Organizations</a></li>
+            <li><a href="/services/language-service-providers/" class="text-gray-400 hover:text-white transition-colors text-sm">Access Point (for LSPs)</a></li>
+            <li><a href="/services/mobile-app/"                 class="text-gray-400 hover:text-white transition-colors text-sm">Mobile App</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Legal</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/privacy/" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+            <li><a href="/terms/"   class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <p>&copy; 2025 interpretingWorks · Language Link Corporation. All rights reserved.</p>
+        <p>Serving hospitals, clinics, courts, schools, and businesses across the United States.</p>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>

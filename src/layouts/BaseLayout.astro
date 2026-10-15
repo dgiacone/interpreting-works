@@ -1,0 +1,172 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  schema?: Record<string, unknown>[];
+  /** ISO 8601 — solo para páginas de tipo article */
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** Geo — para páginas ciudad/estado */
+  geoRegion?: string;       // e.g. "US-FL"
+  geoPlacename?: string;    // e.g. "Miami, Florida"
+  geoPosition?: string;     // e.g. "25.7617;-80.1918"
+}
+
+const {
+  title,
+  description,
+  image = '/img/og-default.png',
+  type = 'website',
+  noindex = false,
+  schema = [],
+  publishedTime,
+  modifiedTime,
+  geoRegion,
+  geoPlacename,
+  geoPosition,
+} = Astro.props;
+
+const site = Astro.site;
+if (!site) throw new Error('Definí "site" en astro.config.mjs con el dominio canónico.');
+
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+const SITE_ROOT = site.href.replace(/\/$/, '');
+const jsonLd = (obj: unknown) => JSON.stringify(obj).replace(/</g, '\\u003c');
+
+// ── Entidades canónicas (aparecen en TODAS las páginas) ──────────────────────
+
+const baseSchema: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_ROOT}/#organization`,
+    name: "interpretingWorks",
+    alternateName: "Language Link Corporation",
+    url: `${SITE_ROOT}/`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_ROOT}/img/logo.png`,
+      width: 300,
+      height: 96,
+    },
+    description: "Professional interpreter scheduling platform for hospitals, courts, schools, and businesses across the United States. On-site, OPI, and VRI in 203+ languages and ASL.",
+    telephone: "[COMPLETAR]",
+    email: "[COMPLETAR]",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "US",
+      // addressLocality: "[COMPLETAR]",
+      // addressRegion: "[COMPLETAR]",
+    },
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+    ],
+    sameAs: [
+      // "[COMPLETAR] LinkedIn",
+      // "[COMPLETAR] Facebook",
+    ],
+    knowsAbout: [
+      "Medical Interpreting",
+      "Legal Interpreting",
+      "Over-the-Phone Interpreting",
+      "Video Remote Interpreting",
+      "Language Services",
+      "HIPAA Compliance",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${SITE_ROOT}/#software`,
+    name: "interpretingWorks",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, iOS, Android",
+    url: `${SITE_ROOT}/`,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      description: "No setup fees. Pay per completed assignment.",
+    },
+    featureList: [
+      "Interpreter Scheduling Dashboard",
+      "On-site, OPI, and VRI Booking",
+      "203+ Languages and ASL",
+      "HIPAA and HI-TECH Compliant",
+      "Invoicing and Billing Reports",
+      "LSP Management via Access Point",
+      "Mobile App for Interpreters",
+    ],
+    provider: { "@type": "Organization", "@id": `${SITE_ROOT}/#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_ROOT}/#website`,
+    name: "interpretingWorks",
+    url: `${SITE_ROOT}/`,
+    publisher: { "@type": "Organization", "@id": `${SITE_ROOT}/#organization` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_ROOT}/?s={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
+---
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Primary -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/img/icon-transparent.png" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Geo (activado por página según geoRegion/geoPlacename) -->
+    {geoRegion    && <meta name="geo.region"    content={geoRegion} />}
+    {geoPlacename && <meta name="geo.placename" content={geoPlacename} />}
+    {geoPosition  && <meta name="geo.position"  content={geoPosition} />}
+    {geoPlacename && <meta name="ICBM"          content={geoPosition ?? ''} />}
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="interpretingWorks" />
+    <meta property="og:locale"    content="en_US" />
+    <meta property="og:type"      content={type} />
+    <meta property="og:title"     content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url"       content={canonical} />
+    <meta property="og:image"     content={ogImage} />
+    {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {type === 'article' && modifiedTime  && <meta property="article:modified_time"  content={modifiedTime} />}
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImage} />
+
+    <!-- JSON-LD base (todas las páginas) -->
+    {baseSchema.map((block) => <script type="application/ld+json" set:html={jsonLd(block)} />)}
+    <!-- JSON-LD extra (específico por página) -->
+    {schema.map((block) => <script type="application/ld+json" set:html={jsonLd(block)} />)}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <Nav />
+    <slot />
+  </body>
+</html>

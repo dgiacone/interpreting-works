@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://interpreting.works';
+
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE}/about/#aboutpage`,
+    name: "About interpretingWorks — Language Link Corporation",
+    url: `${SITE}/about/`,
+    description: "The story of Language Link Corporation and interpretingWorks — founded by Marisa Gillio & Antonio Di Mario from lived immigrant experience into a mission-driven language access platform serving the United States.",
+    isPartOf: { "@type": "WebSite", "@id": `${SITE}/#website` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE}/#organization`,
+    name: "interpretingWorks",
+    alternateName: "Language Link Corporation",
+    foundingDate: "2011",
+    founder: [
+      { "@type": "Person", name: "Marisa Gillio" },
+      { "@type": "Person", name: "Antonio Di Mario" },
+    ],
+    description: "Language Link Corporation, founded in 2011 by Marisa Gillio and Antonio Di Mario, created interpretingWorks® in 2017 — a professional interpreter scheduling platform serving hospitals, courts, schools, and businesses across the United States.",
+    knowsAbout: [
+      "Medical Interpreting", "Legal Interpreting",
+      "Over-the-Phone Interpreting", "Video Remote Interpreting",
+      "Language Access", "HIPAA Compliance", "Language Services",
+    ],
+  },
+];
+
+const TEAM_SECTIONS = [
+  {
+    label: "Founding Leadership",
+    src: "/img/team-founding-leadership.png",
+    alt: "Founding leadership team — nine people standing outdoors with mountains in the background",
+  },
+  {
+    label: "Interpreters & Coordination",
+    src: "/img/team-interpreters.png",
+    alt: "Interpreters and coordination team collage",
+  },
+  {
+    label: "Client Relations & Finance",
+    src: "/img/team-client-relations.png",
+    alt: "Client relations and finance team photos",
+  },
+  {
+    label: "Information Technology",
+    src: "/img/team-it.png",
+    alt: "Information technology team collage",
+  },
+];
+---
+
+<BaseLayout
+  title="About interpretingWorks — Language Link Corporation"
+  description="Language Link was not born in a boardroom. It began at a kitchen table. The story of how Marisa Gillio & Antonio Di Mario built a mission-driven language access platform serving the United States since 2011."
+  geoRegion="US"
+  geoPlacename="United States"
+  schema={pageSchema}
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="relative bg-white overflow-hidden pt-20 pb-16 border-b border-gray-100">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,#FFF0F1_0%,rgba(255,255,255,0)_70%)]" aria-hidden="true"></div>
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-5 inline-flex items-center rounded-full border border-[#DC3C52]/20 bg-[#FFF0F1] px-4 py-2 text-sm font-semibold text-[#DC3C52]">
+          Language Link Corporation
+        </div>
+        <h1 class="text-[40px] sm:text-[54px] lg:text-[64px] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#0D1B2A] mb-6">
+          About Us
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-10">
+          Welcome to <strong class="text-[#DC3C52]">interpretingWorks</strong>, Language Link Corporation's innovative software solution. Our platform is your ultimate hub for professional interpreters across all modalities, accessible instantly through our comprehensive system.
+        </p>
+        <!-- Hero composite image -->
+        <div class="mt-12 max-w-4xl mx-auto">
+          <img
+            src="/img/about-hero.png"
+            alt="interpretingWorks platform shown on tablet, agenda mobile app, and requests mobile app"
+            class="w-full rounded-3xl"
+            width="1920" height="1080"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION STATEMENT -->
+    <section class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-6 leading-tight">
+              Transforming Access to Professional Interpreting
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+              From business meetings and medical appointments to legal proceedings and beyond, we connect you with the perfect interpreter for seamless communication. Our services serve not only individuals but also organizations and agencies.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              With our powerful <strong class="font-semibold text-[#0D1B2A]">Software-as-a-Service (SaaS)</strong> solution, managing interpreter schedules becomes effortless, ensuring every need is met with precision and ease.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              At interpretingWorks, we're transforming how businesses, large and small, access professional interpreting services. By streamlining processes, we help users cut administrative costs by up to <strong class="font-semibold text-[#DC3C52]">50%</strong> without compromising quality.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { value: '203+',  label: 'Languages & dialects' },
+              { value: '2011',  label: 'Founded' },
+              { value: '50%',   label: 'Admin cost reduction' },
+              { value: '100k+', label: 'Appointments/year' },
+            ].map(stat => (
+              <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
+                <p class="text-3xl font-extrabold text-[#DC3C52] mb-1 tracking-tight">{stat.value}</p>
+                <p class="text-sm text-gray-500 font-medium">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVERSITY STATEMENT -->
+    <section class="py-14 bg-[#0D1B2A] text-white text-center">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xl md:text-2xl font-medium leading-relaxed text-white/90">
+          Together, we celebrate and leverage the richness of diverse perspectives, experiences, and backgrounds to create <strong class="text-white font-bold">sustainable, inclusive solutions</strong> for a connected world.
+        </p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-20 bg-[#FFF0F1]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <blockquote class="text-3xl md:text-4xl font-bold text-[#0D1B2A] leading-tight mb-8">
+          "Huge win for me, my team, the hospital and the patients."
+        </blockquote>
+        <p class="text-gray-500 font-medium text-lg">— CNO / Hospital</p>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="py-24 bg-white border-y border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#DC3C52]">The People Behind the Platform</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A]">Our Team, Our Family</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {TEAM_SECTIONS.map(section => (
+            <div class="group overflow-hidden rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
+              <div class="aspect-[4/3] overflow-hidden">
+                <img
+                  src={section.src}
+                  alt={section.alt}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  width="400" height="300"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-bold text-[#0D1B2A] text-sm">{section.label}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section header -->
+        <div class="max-w-3xl mb-16">
+          <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#DC3C52]">Our History</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4 leading-tight">The Story of Language Link</h2>
+          <p class="text-gray-500 font-medium text-lg">Founded by Marisa Gillio &amp; Antonio Di Mario</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+          <!-- Story text -->
+          <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-5">
+            <h3 class="text-2xl font-bold text-[#0D1B2A] leading-snug not-prose">
+              Language Link was not born in a boardroom. It began at a kitchen table — with a family, a purpose, and a deep understanding of what it feels like to struggle to be heard.
+            </h3>
+            <p>
+              Marisa Gillio and Antonio Di Mario built Language Link from lived experience. As part of an immigrant family, language was never just about words; it was about dignity, access, opportunity, and survival. They saw firsthand how communication barriers affected people in hospitals, courts, schools, and government offices. Important decisions, legal rights, and human dignity were often lost in translation.
+            </p>
+            <p>
+              Marisa, driven by a strong sense of justice and service, began working in the language access field. Antonio, with an entrepreneurial spirit and operational mindset, recognized that the industry lacked structure, fairness, and technology. Interpreters were under-supported, agencies were inefficient, and many individuals were not receiving the quality of communication they deserved.
+            </p>
+            <p>
+              Together, as partners in life and vision, they decided to build something different — not just a company, but a mission-driven family business. <strong class="font-semibold text-[#0D1B2A]">In 2011, Language Link was born.</strong>
+            </p>
+            <p>
+              In the early days, operations were simple. Phones rang at all hours. Schedules were handwritten. Family members helped coordinate assignments. Every interpreter mattered. Every client mattered. Every person mattered.
+            </p>
+            <p>
+              As Language Link grew, Marisa and Antonio recognized a deeper challenge: the lack of a system truly designed by people who understood the work from the inside. Not just administrators. Not just agencies. But interpreters themselves.
+            </p>
+            <p>
+              From that vision, <strong class="font-semibold text-[#DC3C52]">InterpretingWorks®</strong> was created in 2017. It was built from real-life experience — <em>created by interpreters, for interpreters</em> — without ever forgetting the requester, the agency, or the client.
+            </p>
+          </div>
+
+          <!-- Timeline + impact -->
+          <div class="space-y-6">
+
+            <!-- Timeline -->
+            <div class="relative pl-8 border-l-2 border-[#DC3C52]/20 space-y-8">
+              {[
+                { year: '2011', title: 'Language Link Founded', desc: 'Marisa Gillio and Antonio Di Mario establish Language Link from lived immigrant experience, with a mission to make language access a right, not a luxury.' },
+                { year: '2017', title: 'InterpretingWorks® Created', desc: 'Built by interpreters, for interpreters — a platform that brings balance to the entire language access ecosystem.' },
+                { year: 'Today', title: 'Hundreds of Thousands of Appointments', desc: 'The platform supports hundreds of thousands of appointments per year across hospitals, courts, schools, and businesses throughout the United States.' },
+              ].map(item => (
+                <div class="relative">
+                  <div class="absolute -left-[2.35rem] w-5 h-5 rounded-full bg-[#DC3C52] border-4 border-white shadow"></div>
+                  <p class="text-xs font-bold uppercase tracking-widest text-[#DC3C52] mb-1">{item.year}</p>
+                  <h3 class="font-bold text-[#0D1B2A] mb-2">{item.title}</h3>
+                  <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <!-- What Language Link became -->
+            <div class="mt-10 rounded-3xl bg-gray-50 p-8 border border-gray-100">
+              <p class="font-bold text-[#0D1B2A] mb-5">Language Link became more than a business. It became:</p>
+              <ul class="space-y-3 list-none p-0">
+                {[
+                  'A bridge between languages and cultures',
+                  'A voice for those who could not be heard',
+                  'A platform for interpreters to build sustainable and respected careers',
+                  'A technology-driven solution grounded in real-world experience',
+                  'A mission rooted in dignity, equity, and access to appropriate communication for all',
+                ].map(item => (
+                  <li class="flex items-start gap-3 text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-[#DC3C52] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- InterpretingWorks ecosystem balance -->
+            <div class="rounded-3xl bg-[#0D1B2A] p-8 text-white">
+              <p class="font-bold text-white mb-5">InterpretingWorks brought balance to the entire ecosystem:</p>
+              <ul class="space-y-3 list-none p-0">
+                {[
+                  { who: 'Interpreters',   benefit: 'Control, transparency, and fair opportunity' },
+                  { who: 'Agencies',       benefit: 'Structure, automation, and operational efficiency' },
+                  { who: 'Requesters',     benefit: 'Smooth and reliable language need management' },
+                  { who: 'Clients',        benefit: 'Consistent, dignified, and effective communication' },
+                ].map(item => (
+                  <li class="flex items-start gap-3 text-sm">
+                    <span class="text-[#DC3C52] font-bold min-w-[90px]">{item.who}</span>
+                    <span class="text-white/75">{item.benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Closing statement -->
+        <div class="mt-20 max-w-3xl mx-auto text-center">
+          <p class="text-gray-500 text-lg mb-8">
+            Today, Language Link still carries the same foundation it started with: <strong class="text-[#0D1B2A]">family, purpose, and community</strong>. What began at a kitchen table grew into a respected organization, but at its heart remains the vision of Marisa Gillio and Antonio Di Mario:
+          </p>
+          <blockquote class="text-2xl md:text-3xl font-bold text-[#0D1B2A] leading-snug border-l-4 border-[#DC3C52] pl-6 text-left">
+            Access to appropriate communication is for everyone. Language access is not a luxury. It is a right.
+          </blockquote>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-[#DC3C52] text-white text-center">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-5 leading-tight">Ready to Experience interpretingWorks?</h2>
+        <p class="text-white/80 text-lg mb-10">
+          Join the hospitals, clinics, courts, and schools that trust interpretingWorks to bridge language barriers every day.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/request-demo/" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-[#DC3C52] shadow-lg hover:bg-gray-50 transition-colors">
+            Request a Demo
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 bg-transparent px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D1B2A] text-white border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div class="lg:col-span-2">
+          <img src="/img/logo.png" alt="interpretingWorks" class="h-10 w-auto mb-6 brightness-0 invert" width="200" height="64" loading="lazy" />
+          <p class="text-gray-400 text-base max-w-sm leading-relaxed">
+            interpretingWorks by Language Link Corporation. Professional interpreting scheduling for organizations and the LSPs that serve them across the United States.
+          </p>
+        </div>
+        <nav aria-label="Company links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Company</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/about/"     class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
+            <li><a href="/resources/" class="text-gray-400 hover:text-white transition-colors text-sm">Resources</a></li>
+            <li><a href="/contact/"   class="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Solutions links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Solutions</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/services/organizations/"              class="text-gray-400 hover:text-white transition-colors text-sm">For Organizations</a></li>
+            <li><a href="/services/language-service-providers/" class="text-gray-400 hover:text-white transition-colors text-sm">Access Point (for LSPs)</a></li>
+            <li><a href="/services/mobile-app/"                 class="text-gray-400 hover:text-white transition-colors text-sm">Mobile App</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Legal</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/privacy/" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+            <li><a href="/terms/"   class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <p>&copy; 2025 interpretingWorks · Language Link Corporation. All rights reserved.</p>
+        <p>Serving hospitals, clinics, courts, schools, and businesses across the United States.</p>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>

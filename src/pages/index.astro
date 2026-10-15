@@ -1,0 +1,483 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScreenshotTabs from '../components/ScreenshotTabs.tsx';
+
+const SITE = 'https://interpreting.works';
+
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE}/#service-interpreting`,
+    name: "Professional Interpreter Scheduling",
+    serviceType: "Language Interpretation Services",
+    provider: { "@type": "Organization", "@id": `${SITE}/#organization` },
+    areaServed: { "@type": "Country", name: "United States" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Interpreting Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "On-site Interpreting" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Over-the-Phone Interpreting (OPI)" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Video Remote Interpreting (VRI)" } },
+      ],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What languages does interpretingWorks support?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "interpretingWorks supports over 203 languages and dialects, including American Sign Language (ASL), covering medical, legal, and business interpreting needs across the United States.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is interpretingWorks HIPAA compliant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. interpretingWorks leverages robust cybersecurity practices to ensure compliance with HIPAA and the HI-TECH Act, protecting the privacy and security of all Protected Health Information (PHI).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between OPI and VRI?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "OPI (Over-the-Phone Interpreting) connects patients and providers to an interpreter by phone. VRI (Video Remote Interpreting) adds a live video feed, which is especially useful for sign language or when visual cues are important.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are there setup fees to use interpretingWorks?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. interpretingWorks has no setup fees and no hidden costs. Organizations pay per completed assignment.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Who can use the Access Point mobile app?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Access Point is the interpretingWorks mobile app designed for Language Service Providers (LSPs) and their interpreters. It allows LSPs to manage interpreter assignments, scheduling, and billing from any device.",
+        },
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="interpretingWorks – Professional Interpreter Scheduling in the USA"
+  description="Connect patients and providers with certified interpreters. On-site, OPI, and VRI in 203+ languages and ASL. HIPAA compliant. No setup fees. Request a demo."
+  geoRegion="US"
+  geoPlacename="United States"
+  schema={pageSchema}
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="relative bg-white overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#FFF0F1_0%,rgba(255,255,255,0)_65%)]" aria-hidden="true"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-0">
+
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="mb-6 inline-flex items-center rounded-full border border-[#DC3C52]/20 bg-[#FFF0F1] px-4 py-2 text-sm font-semibold text-[#DC3C52]">
+            Professional Interpreter Scheduling Platform
+          </div>
+          <h1 class="text-[38px] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#0D1B2A] sm:text-[50px] lg:text-[60px]">
+            Connect People. Less Time Coordinating Interpreters.
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Care for your patients or grow your language services business with
+            <strong class="text-[#DC3C52] font-semibold">professional interpreting</strong>,
+            easy scheduling, and clear billing — all in one place.
+          </p>
+        </div>
+
+        <!-- Hero image -->
+        <div class="mt-12 relative">
+          <div class="absolute -inset-x-4 top-8 bottom-0 bg-white rounded-t-3xl" aria-hidden="true"></div>
+          <div class="relative">
+            <img
+              src="/img/home-laptop.png"
+              alt="interpretingWorks scheduling dashboard showing Quality Assurance list with color-coded interpreter booking statuses"
+              class="relative w-full rounded-t-2xl border border-b-0 border-gray-100"
+              width="1411" height="793" loading="eager"
+            />
+            <div class="absolute bottom-0 right-4 sm:right-10 w-[22%] hidden sm:block">
+              <img
+                src="/img/agenda.png"
+                alt="interpretingWorks mobile app calendar view for March 2025"
+                class="rounded-2xl border-2 border-white/60"
+                width="390" height="844" loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs + trust strip -->
+        <div class="bg-white pb-6 pt-8">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <a href="/request-demo/" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#DC3C52] px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#DC3C52]/20 transition-colors hover:bg-[#b83044]">
+              Request a Demo
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/services/language-service-providers/" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#0D1B2A] bg-white px-7 py-3.5 text-base font-semibold text-[#0D1B2A] transition-colors hover:bg-[#0D1B2A] hover:text-white">
+              For Language Service Providers
+            </a>
+          </div>
+          <ul class="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-gray-400 list-none p-0">
+            {['HIPAA Compliant', '203+ Languages & ASL', 'No Setup Fees', 'On-site · OPI · VRI'].map(item => (
+              <li class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-[#DC3C52] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHO USES -->
+    <section class="pt-12 pb-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">Who Uses interpretingWorks?</h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Built for organizations that need interpreters and the language service providers that support them.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+
+          <article class="bg-white rounded-3xl p-8 md:p-10 border border-[#DC3C52]/20 shadow-xl shadow-[#DC3C52]/8 hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-[#DC3C52]" aria-hidden="true"></div>
+            <div class="mb-6 flex items-center justify-between gap-4">
+              <div class="w-14 h-14 bg-red-50 text-[#DC3C52] rounded-2xl flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+              </div>
+              <span class="rounded-full bg-[#FFF0F1] px-4 py-2 text-sm font-bold text-[#DC3C52]">For Organizations</span>
+            </div>
+            <h3 class="text-2xl font-bold text-[#0D1B2A] mb-4 tracking-tight">Request Professional Interpreters On Demand</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              Hospitals, clinics, courts, schools, and businesses use interpretingWorks to schedule on-site, OPI, and VRI interpreting services, manage billing, and generate compliance reports — all from one dashboard.
+            </p>
+            <a href="/services/organizations/" class="inline-flex items-center gap-2 rounded-full bg-[#DC3C52] px-6 py-3 text-sm font-semibold text-white hover:bg-[#b83044] transition-colors">
+              Get Started
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-[#0D1B2A]" aria-hidden="true"></div>
+            <div class="mb-6 flex items-center justify-between gap-4">
+              <div class="w-14 h-14 bg-slate-50 text-[#0D1B2A] rounded-2xl flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253"/></svg>
+              </div>
+              <span class="rounded-full bg-gray-50 px-4 py-2 text-sm font-bold text-[#0D1B2A]">For Language Service Providers</span>
+            </div>
+            <h3 class="text-2xl font-bold text-[#0D1B2A] mb-4 tracking-tight">Manage Your Interpreters with Access Point</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              Access Point is the workspace LSPs use to manage interpreter assignments, scheduling, and billing. Built for language service providers who want to streamline operations and grow their business.
+            </p>
+            <a href="/services/language-service-providers/" class="inline-flex items-center gap-2 rounded-full border border-[#0D1B2A] bg-white px-6 py-3 text-sm font-semibold text-[#0D1B2A] hover:bg-[#0D1B2A] hover:text-white transition-colors">
+              Explore Access Point
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM SCREENSHOTS -->
+    <section class="py-24 bg-white border-y border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">
+            Manage Interpreter Scheduling, Billing &amp; Reports in One Place
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            From scheduling to payments and compliance reporting, interpretingWorks centralizes your interpreting operations.
+          </p>
+        </div>
+
+        <ScreenshotTabs client:load />
+
+        <ul class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 list-none p-0">
+          {[
+            { title: 'Scheduling Dashboard',  desc: 'Schedule on-site, OPI, and VRI assignments from one place.' },
+            { title: 'Interpreter Matching',  desc: '203+ languages — find the right background per assignment.' },
+            { title: 'Invoicing & Payments',  desc: 'Clear invoices and payments without manual back-and-forth.' },
+            { title: 'Compliance Reporting',  desc: 'HIPAA, HI-TECH, billing audits, and quality tracking.' },
+          ].map(item => (
+            <li class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <div>
+                <h3 class="font-bold text-[#0D1B2A] mb-1 text-sm">{item.title}</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">Why Choose interpretingWorks?</h2>
+        <p class="text-gray-500 text-lg mb-16 max-w-xl mx-auto">
+          Everything your organization needs, built for reliability and HIPAA compliance.
+        </p>
+        <ul class="grid md:grid-cols-3 gap-8 text-left list-none p-0">
+          {[
+            { title: 'Qualified Interpreters',    desc: 'Over 203 languages, dialects, and ASL — certified interpreters matched to your specific clinical or legal context.' },
+            { title: 'HIPAA & HI-TECH Compliant', desc: 'Robust cybersecurity practices protect PHI. Our platform meets healthcare compliance requirements for medical providers.' },
+            { title: 'No Setup Fees',             desc: 'Competitive rates with no setup costs and no hidden fees. Pay only per completed assignment.' },
+          ].map(card => (
+            <li class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+              <h3 class="text-lg font-bold text-[#0D1B2A] mb-3">{card.title}</h3>
+              <p class="text-gray-500 leading-relaxed text-sm">{card.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-24 bg-[#FFF0F1]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#DC3C52]">What Our Customers Say</p>
+        <blockquote class="text-2xl md:text-3xl font-medium text-[#0D1B2A] leading-relaxed mb-10">
+          "I used the service twice on Friday and both were positive experiences. Thank you, this will be an awesome tool for me to have access to!"
+        </blockquote>
+        <div class="flex items-center justify-center gap-4">
+          <img
+            src="/img/testimonial-person.jpg"
+            alt="Madison, customer at Polymeric Engineering"
+            class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md"
+            width="56" height="56" loading="lazy"
+          />
+          <div class="text-left">
+            <p class="font-bold text-[#0D1B2A]">Madison</p>
+            <p class="text-sm text-gray-500">Polymeric Engineering</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESS POINT -->
+    <section class="py-24 bg-white border-y border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="border-l-4 border-[#DC3C52] pl-6 sm:pl-8">
+            <p class="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#DC3C52]">Part of interpretingWorks</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#0D1B2A] leading-tight mb-6 tracking-tight">
+              Access Point: The Management Workspace for Language Service Providers
+            </h2>
+            <p class="text-lg text-gray-600 leading-relaxed max-w-xl mb-8">
+              If you are an LSP, Access Point gives you the tools to manage your interpreter network, accept and assign jobs, track billing, and grow your business — all within interpretingWorks.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              {['Interpreter Management', 'Job Assignment', 'Billing & Invoicing'].map(tag => (
+                <span class="rounded-full bg-gray-50 px-4 py-2 text-sm font-semibold text-[#0D1B2A] ring-1 ring-gray-200">{tag}</span>
+              ))}
+            </div>
+            <a href="/services/language-service-providers/" class="inline-flex items-center gap-2 rounded-full border border-[#DC3C52] bg-transparent px-6 py-3 text-base font-semibold text-[#DC3C52] hover:bg-[#DC3C52] hover:text-white transition-colors">
+              Learn More About Access Point
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="rounded-3xl bg-white p-5 shadow-xl shadow-slate-900/10 ring-1 ring-gray-200">
+            <div class="rounded-2xl bg-[#0D1B2A] p-5 text-white">
+              <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-white/50">Access Point</p>
+                  <h3 class="mt-1 text-2xl font-bold tracking-tight">LSP Operations</h3>
+                </div>
+                <span class="rounded-full bg-[#DC3C52] px-3 py-1.5 text-xs font-bold text-white">Live</span>
+              </div>
+              <dl class="grid gap-3 py-5 sm:grid-cols-3">
+                {[
+                  { value: '284', label: 'Interpreters' },
+                  { value: '42',  label: 'Open jobs' },
+                  { value: '96%', label: 'Fill rate' },
+                ].map(stat => (
+                  <div class="rounded-xl bg-white/[0.08] p-4 ring-1 ring-white/10">
+                    <dd class="mt-1 text-2xl font-bold">{stat.value}</dd>
+                    <dt class="text-xs text-white/60">{stat.label}</dt>
+                  </div>
+                ))}
+              </dl>
+              <ul class="space-y-2 rounded-2xl bg-white p-4 text-[#0D1B2A] list-none m-0">
+                <li class="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3">
+                  <div>
+                    <p class="font-bold text-sm">Mandarin VRI</p>
+                    <p class="text-xs text-gray-500">Assign interpreter · 2:00 PM</p>
+                  </div>
+                  <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-700">Open</span>
+                </li>
+                <li class="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3">
+                  <div>
+                    <p class="font-bold text-sm">Arabic on-site</p>
+                    <p class="text-xs text-gray-500">Interpreter confirmed</p>
+                  </div>
+                  <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Ready</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE APP -->
+    <section class="relative py-24 bg-[#DC3C52] overflow-hidden text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Mobile App</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              App for LSP, Interpreters &amp; Consumers
+            </h2>
+            <p class="text-xl text-white/85 mb-4 leading-relaxed max-w-lg">
+              Our exclusive <strong class="font-bold text-white">Access Point</strong> app gives consumers and interpreters instant access to professional interpreting: on-demand over Phone and Video, everywhere and when you need it.
+            </p>
+            <p class="mb-8 text-sm text-white/65">If you are registered, you can install our mobile application.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#" class="flex items-center gap-3 bg-black/80 hover:bg-black rounded-xl px-4 py-3 border border-white/10 transition-colors" aria-label="Download interpretingWorks on the App Store">
+                <img src="/img/app-store-badge.png" alt="Download on the App Store" class="h-9 w-auto" width="120" height="36" loading="lazy" />
+              </a>
+              <a href="#" class="flex items-center gap-3 bg-black/80 hover:bg-black rounded-xl px-4 py-3 border border-white/10 transition-colors" aria-label="Get interpretingWorks on Google Play">
+                <img src="/img/google-play-badge.png" alt="Get it on Google Play" class="h-9 w-auto" width="120" height="36" loading="lazy" />
+              </a>
+            </div>
+          </div>
+          <div
+            class="w-full h-72 lg:h-96"
+            role="img"
+            aria-label="interpretingWorks mobile app shown on phone, tablet and laptop"
+            style="background-image:url('/img/imagen101.png');background-position:right center;background-repeat:no-repeat;background-size:auto 100%;"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="py-16 bg-white border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10">
+          Trusted, Certified &amp; Recognized
+        </p>
+        <ul class="flex flex-wrap justify-center items-center gap-10 md:gap-16 list-none p-0">
+          {[
+            { src: '/img/alc2024-badge.jpg',  alt: 'ALC 2024 Member Badge' },
+            { src: '/img/aha-logo.png',       alt: 'AHA Associate' },
+            { src: '/img/bbb-logo.webp',      alt: 'BBB Accredited Business' },
+            { src: '/img/top100-badge.png',   alt: 'Top 100 Largest Language Service Providers — Nimdzi' },
+            { src: '/img/ata-logo.jpg',       alt: 'American Translators Association member' },
+          ].map(badge => (
+            <li>
+              <img src={badge.src} alt={badge.alt} class="h-16 w-auto object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300" width="80" height="64" loading="lazy" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ (AEO) -->
+    <section class="py-24 bg-gray-50 border-b border-gray-100">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-[#0D1B2A] mb-12 text-center">Frequently Asked Questions</h2>
+        <dl class="space-y-6">
+          {[
+            { q: 'What languages does interpretingWorks support?',
+              a: 'interpretingWorks supports over 203 languages and dialects, including American Sign Language (ASL). Our certified interpreters cover medical, legal, educational, and business contexts across the United States.' },
+            { q: 'Is interpretingWorks HIPAA compliant?',
+              a: 'Yes. interpretingWorks leverages robust cybersecurity practices compliant with HIPAA and the HI-TECH Act, ensuring the privacy and security of all Protected Health Information (PHI).' },
+            { q: 'What is the difference between OPI and VRI?',
+              a: 'OPI (Over-the-Phone Interpreting) connects patients and providers to an interpreter by phone. VRI (Video Remote Interpreting) adds a live video feed — especially useful for sign language or when visual cues are important.' },
+            { q: 'Are there setup fees to use interpretingWorks?',
+              a: 'No. interpretingWorks has no setup fees and no hidden costs. Organizations pay only per completed assignment, making it easy to scale usage without financial risk.' },
+            { q: 'Who can use the Access Point mobile app?',
+              a: 'Access Point is designed for Language Service Providers (LSPs) and their interpreters. It enables LSPs to manage assignments, scheduling, and billing from any device.' },
+          ].map(item => (
+            <div class="border-b border-gray-200 pb-6">
+              <dt class="text-lg font-bold text-[#0D1B2A] mb-2">{item.q}</dt>
+              <dd class="text-gray-600 leading-relaxed">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- CTA BOTTOM -->
+    <section class="py-24 bg-[#0D1B2A] text-white text-center">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Ready to Enhance Communication Today?</h2>
+        <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+          Join hospitals, clinics, courts, and schools already using interpretingWorks. Request a demo and see the platform in action.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/request-demo/" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#DC3C52] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-[#DC3C52]/30 hover:bg-[#b83044] transition-colors">
+            Request a Demo
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D1B2A] text-white border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div class="lg:col-span-2">
+          <img src="/img/logo.png" alt="interpretingWorks" class="h-10 w-auto mb-6 brightness-0 invert" width="200" height="64" loading="lazy" />
+          <p class="text-gray-400 text-base mb-4 max-w-sm leading-relaxed">
+            interpretingWorks by Language Link Corporation. Professional interpreting scheduling for organizations and the LSPs that serve them across the United States.
+          </p>
+        </div>
+        <nav aria-label="Company links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Company</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/about/"     class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
+            <li><a href="/resources/" class="text-gray-400 hover:text-white transition-colors text-sm">Resources</a></li>
+            <li><a href="/contact/"   class="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Solutions links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Solutions</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/services/organizations/"              class="text-gray-400 hover:text-white transition-colors text-sm">For Organizations</a></li>
+            <li><a href="/services/language-service-providers/" class="text-gray-400 hover:text-white transition-colors text-sm">Access Point (for LSPs)</a></li>
+            <li><a href="/services/mobile-app/"                 class="text-gray-400 hover:text-white transition-colors text-sm">Mobile App</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal links">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-5">Legal</h2>
+          <ul class="space-y-3 list-none p-0">
+            <li><a href="/privacy/" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+            <li><a href="/terms/"   class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <p>&copy; 2025 interpretingWorks · Language Link Corporation. All rights reserved.</p>
+        <p class="text-center md:text-right">Serving hospitals, clinics, courts, schools, and businesses across the United States.</p>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>
