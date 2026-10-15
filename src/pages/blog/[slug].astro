@@ -42,6 +42,11 @@ const articleSchema = {
   schema={[articleSchema]}
   geoRegion="US"
   geoPlacename="United States"
+  breadcrumbs={[
+    { name: 'Home',   href: 'https://interpreting.works/' },
+    { name: 'Blog',   href: 'https://interpreting.works/blog/' },
+    { name: post.data.title },
+  ]}
 >
 
   <main>
