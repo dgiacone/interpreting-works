@@ -49,3 +49,12 @@ The interpretingWorks platform was built with compliance at its core:
 If your organization doesn't have a structured language access program, interpretingWorks can help you build one. There are no setup fees — you pay only for completed assignments.
 
 [Contact us](/contact/) to learn how we support hospitals, clinics, courts, and schools across the United States.
+
+---
+
+**Sources & Further Reading**
+
+- [HHS Office for Civil Rights — Limited English Proficiency](https://www.hhs.gov/civil-rights/for-individuals/special-topics/limited-english-proficiency/index.html)
+- [Section 1557 of the Affordable Care Act — HHS](https://www.hhs.gov/civil-rights/for-individuals/section-1557/index.html)
+- [National CLAS Standards — Think Cultural Health (HHS)](https://thinkculturalhealth.hhs.gov/clas)
+- [The Joint Commission — Advancing Effective Communication](https://www.jointcommission.org/resources/patient-safety-topics/health-equity/)

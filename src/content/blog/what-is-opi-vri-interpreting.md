@@ -45,3 +45,11 @@ Real-time status updates keep your team informed, and electronic check-in/out vi
 If you need speed and simplicity, OPI is your go-to. If the interaction requires visual communication — or involves ASL — VRI is the right choice. With interpretingWorks, switching between modalities takes seconds.
 
 **Questions about setting up OPI or VRI for your organization?** [Contact our team](/contact/) and we'll walk you through it.
+
+---
+
+**Sources & Further Reading**
+
+- [NCIHC — National Standards for Healthcare Interpreting](https://www.ncihc.org/standards-and-guidelines)
+- [CCHI — Certification Commission for Healthcare Interpreters](https://www.cchicertification.org/)
+- [ATA — American Translators Association](https://www.atanet.org/)

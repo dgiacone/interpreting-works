@@ -18,6 +18,9 @@ interface Props {
   geoPosition?: string;
   /** Breadcrumb override — si no se pasa se autogenera desde la URL */
   breadcrumbs?: { name: string; href?: string }[];
+  /** Visible attribution — shown in the breadcrumb bar */
+  updatedDate?: string;   // YYYY-MM-DD
+  pageAuthor?: string;
 }
 
 const {
@@ -33,7 +36,13 @@ const {
   geoPlacename,
   geoPosition,
   breadcrumbs: breadcrumbsProp,
+  updatedDate,
+  pageAuthor,
 } = Astro.props;
+
+function fmtDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
 
 const site = Astro.site;
 if (!site) throw new Error('Definí "site" en astro.config.mjs con el dominio canónico.');
@@ -211,7 +220,7 @@ const baseSchema: Record<string, unknown>[] = [
     <Nav />
     {breadcrumbs.length > 1 && (
       <nav aria-label="Breadcrumb" class="bg-white border-b border-gray-100">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
           <ol class="flex flex-wrap items-center gap-1 text-xs text-gray-400">
             {breadcrumbs.map((crumb, i) => (
               <li class="flex items-center gap-1">
@@ -223,6 +232,15 @@ const baseSchema: Record<string, unknown>[] = [
               </li>
             ))}
           </ol>
+          {(updatedDate || pageAuthor) && (
+            <p class="text-xs text-gray-400 flex items-center gap-2">
+              {updatedDate && (
+                <span>Updated <time datetime={updatedDate}>{fmtDate(updatedDate)}</time></span>
+              )}
+              {updatedDate && pageAuthor && <span aria-hidden="true">·</span>}
+              {pageAuthor && <span>By <span class="font-medium text-gray-500">{pageAuthor}</span></span>}
+            </p>
+          )}
         </div>
       </nav>
     )}

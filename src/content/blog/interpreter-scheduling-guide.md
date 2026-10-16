@@ -83,3 +83,11 @@ The result: less admin overhead, fewer gaps, and a program that holds up under s
 ---
 
 Ready to see it in action? [Request a demo](/request-demo/) and we'll walk through your specific volume and language mix.
+
+---
+
+**Sources & Further Reading**
+
+- [Title VI of the Civil Rights Act — DOJ](https://www.justice.gov/crt/fcs/TitleVI)
+- [HHS — Guidance to Federal Financial Assistance Recipients on LEP](https://www.hhs.gov/civil-rights/for-individuals/special-topics/limited-english-proficiency/index.html)
+- [The Joint Commission — Language Access Standards](https://www.jointcommission.org/resources/patient-safety-topics/health-equity/)
