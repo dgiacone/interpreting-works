@@ -1,10 +1,12 @@
-export const prerender = true;
+export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-export const GET: APIRoute = async ({ site }) => {
-  const root = site?.href.replace(/\/$/, '') ?? 'https://interpreting.works';
+export const GET: APIRoute = async ({ request }) => {
+  const host  = request.headers.get('host') ?? '';
+  const proto = request.headers.get('x-forwarded-proto') ?? 'https';
+  const root  = host ? `${proto}://${host}` : 'https://interpreting.works';
 
   const posts = await getCollection('blog', ({ data }) => !data.draft);
 
@@ -42,6 +44,9 @@ export const GET: APIRoute = async ({ site }) => {
   ].join('\n');
 
   return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    },
   });
 };
